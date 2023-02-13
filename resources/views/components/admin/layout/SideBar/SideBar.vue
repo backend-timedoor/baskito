@@ -34,6 +34,13 @@
         >
           Modal
         </SideBarLink>
+        <SideBarLink
+          icon="fas fa-check-square"
+          :href="$route('admin.selector')"
+          :active="routeIs('admin.selector')"
+        >
+          Selector
+        </SideBarLink>
         <SideBarDropdown
           title="Other Page"
           icon="fas fa-columns"
