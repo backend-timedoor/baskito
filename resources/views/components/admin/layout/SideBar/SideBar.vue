@@ -60,12 +60,17 @@
             :active="routeIs('admin.component.sweet-alert')"
           >
             Sweet Alert
-          </SideBarLink>
+        </SideBarLink>
           <SideBarLink
             :href="$route('admin.component.input')"
             :active="routeIs('admin.component.input')"
           >
             Input
+          </SideBarLink>
+          <SideBarLink
+            :href="$route('admin.component.card')"
+            :active="routeIs('admin.component.card')">
+            Card
           </SideBarLink>
         </SideBarDropdown>
       </ul>
