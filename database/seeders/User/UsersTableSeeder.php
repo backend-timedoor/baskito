@@ -3,6 +3,7 @@
 namespace Database\Seeders\User;
 
 use Illuminate\Database\Seeder;
+use Nette\Utils\Random;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,21 +14,32 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $adminRole   = config('roles.models.role')::where('slug', '=', 'superadmin')->first();
-        $permissions = config('roles.models.permission')::all();
+        $adminRole = config('roles.models.role')::where('slug', '=', 'super.admin')->first();
+        $userClass = config('roles.models.defaultUser');
 
-        $newUser = config('roles.models.defaultUser')::firstOrCreate([
-            'email' => 'demo@timedoor.net',
-        ], [
-            'name'              => 'Timedoor Indonesia',
-            'password'          => 'demo123', // store deault password in .env for real project
-            'email_verified_at' => now(),
-        ]);
+        $this->command->info('Here is your admin details to login:');
+        $this->command->info('----------------------------');
 
-        $newUser->attachRole($adminRole);
+        foreach (config('auth.default_admins', []) as $key => $value) {
+            $email = $value['email'] ?? null;
 
-        foreach ($permissions as $permission) {
-            $newUser->attachPermission($permission);
+            if (! $email) {
+                continue;
+            }
+
+            $pass  = Random::generate(12, '0-9a-zA-Z!@#$%&*()_+{}[]');
+            $admin = $userClass::firstOrCreate([
+                'email' => $value['email'],
+            ], [
+                'name'     => $value['name'] ?? '',
+                'password' => $pass,
+            ]);
+
+            $this->command->warn("Email    : {$admin->email}");
+            $this->command->warn("Password : {$pass}");
+            $this->command->info('----------------------------');
+
+            $admin->attachRole($adminRole);
         }
     }
 }

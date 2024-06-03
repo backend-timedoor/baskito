@@ -112,4 +112,14 @@ return [
 
     'password_timeout' => 10800,
 
+    'default_admins' => [
+        'dev' => [
+            'name'  => env('DEV_ADMIN_NAME', 'Developer Timedoor'),
+            'email' => env('DEV_ADMIN_EMAIL', 'dev@timedoor.net'),
+        ],
+        'super' => [
+            'name'  => env('SUPER_ADMIN_NAME'),
+            'email' => env('SUPER_ADMIN_EMAIL'),
+        ],
+    ],
 ];

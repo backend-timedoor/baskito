@@ -1,0 +1,21 @@
+[
+    {
+        "name": "Can View Permissions",
+        "slug": "view.permission",
+        "description": "Can view permission",
+        "model": "Permission"
+    },
+
+    {
+        "name": "Can Edit User",
+        "slug": "edit.user",
+        "description": "Can edit users",
+        "model": "Permission"
+    },
+    {
+        "name": "Can View User",
+        "slug": "view.user",
+        "description": "Can view users",
+        "model": "Permission"
+    }
+]
