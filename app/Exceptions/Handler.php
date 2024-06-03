@@ -6,6 +6,9 @@ use App\Exceptions\Concerns\ExceptionFormatter;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use jeremykenedy\LaravelRoles\App\Exceptions\LevelDeniedException;
+use jeremykenedy\LaravelRoles\App\Exceptions\PermissionDeniedException;
+use jeremykenedy\LaravelRoles\App\Exceptions\RoleDeniedException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
@@ -28,7 +31,9 @@ class Handler extends ExceptionHandler
      * @var array<int, class-string<\Throwable>>
      */
     protected $dontReport = [
-        //
+        RoleDeniedException::class,
+        PermissionDeniedException::class,
+        LevelDeniedException::class,
     ];
 
     /**
@@ -126,9 +131,9 @@ class Handler extends ExceptionHandler
      */
     protected function permissionException(Throwable $e)
     {
-        return $e instanceof \jeremykenedy\LaravelRoles\App\Exceptions\RoleDeniedException ||
-            $e instanceof \jeremykenedy\LaravelRoles\App\Exceptions\PermissionDeniedException ||
-            $e instanceof \jeremykenedy\LaravelRoles\App\Exceptions\LevelDeniedException;
+        return $e instanceof RoleDeniedException ||
+            $e instanceof PermissionDeniedException ||
+            $e instanceof LevelDeniedException;
     }
 
     /**
@@ -143,7 +148,7 @@ class Handler extends ExceptionHandler
     protected function urlPathPattern()
     {
         return [
-            'api/v[1-9]+/.*',
+            'api/admin/v[1-9]+/.*',
         ];
     }
 }

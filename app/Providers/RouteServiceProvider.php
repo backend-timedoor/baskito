@@ -29,13 +29,16 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
+            // TODO Uncomment Admin API endpoint if you don't use it.
             Route::middleware('api')
-                ->prefix('api')
-                ->group(base_path('routes/api.php'));
+                ->prefix('api/admin/v1')
+                ->as('api.admin.v1.')
+                ->group(base_path('routes/api/admin/v1.php'));
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
 
+            // TODO Uncomment Admin endpoint if you user Admin API in your project.
             Route::middleware('web')
                 ->prefix('dashboard')
                 ->as('admin.')
