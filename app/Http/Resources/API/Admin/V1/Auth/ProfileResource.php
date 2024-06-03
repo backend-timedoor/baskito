@@ -24,6 +24,7 @@ class ProfileResource extends JsonResource
             'id'    => $user->id,
             'name'  => $user->name,
             'email' => $user->email,
+            'photo' => $user->photo_profile,
             'role'  => $role ? ($role->slug ?? null) : null,
         ];
     }

@@ -5,6 +5,7 @@ namespace App\Modules\User\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Supports\Models\Concerns\HasPassword;
+use App\Supports\UIAvatar\UIAvatar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -47,4 +48,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getPhotoProfileAttribute(): string
+    {
+        return UIAvatar::make()
+            ->size(512)
+            ->bold()
+            ->generate($this->name);
+    }
 }
