@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\API\Admin\V1\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\API\Admin\V1\Auth\MeResource;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -36,11 +36,7 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        return JsonResource::make($user->only([
-            'id',
-            'name',
-            'email',
-        ]));
+        return MeResource::make($user);
     }
 
     /**
