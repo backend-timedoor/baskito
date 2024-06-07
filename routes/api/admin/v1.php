@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\Admin\V1\Admin\AdminController;
+use App\Http\Controllers\API\Admin\V1\Admin\AdminRoleController;
 use App\Http\Controllers\API\Admin\V1\Auth\ChangePasswordController;
 use App\Http\Controllers\API\Admin\V1\Auth\LoginController;
 use App\Http\Controllers\API\Admin\V1\Auth\MeController;
@@ -20,5 +21,6 @@ Route::middleware('auth:api-admin')->group(function () {
         Route::get('permission', [UserPermissionController::class, 'index'])->name('permission.index');
     });
 
+    Route::get('admin/role', [AdminRoleController::class, 'index'])->name('admin.role.index');
     Route::apiResource('admin', AdminController::class);
 });
