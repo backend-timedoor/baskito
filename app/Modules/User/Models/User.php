@@ -5,11 +5,11 @@ namespace App\Modules\User\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Supports\Models\Concerns\HasPassword;
+use App\Supports\Models\Concerns\HasRoleAndPermission;
 use App\Supports\UIAvatar\UIAvatar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 use Laravel\Sanctum\HasApiTokens;
 
 /**

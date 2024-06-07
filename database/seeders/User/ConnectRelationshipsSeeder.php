@@ -3,6 +3,7 @@
 namespace Database\Seeders\User;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 
 class ConnectRelationshipsSeeder extends Seeder
@@ -34,5 +35,7 @@ class ConnectRelationshipsSeeder extends Seeder
 
             $role->syncPermissions($permissions);
         }
+
+        Cache::tags(['permissions'])->flush();
     }
 }
