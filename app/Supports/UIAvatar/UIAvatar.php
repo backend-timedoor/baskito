@@ -9,7 +9,10 @@ class UIAvatar
      */
     protected string $url = 'https://ui-avatars.com/api/';
 
-    public function __construct(
+    /**
+     * @param  array<string, mixed>  $options
+     */
+    final public function __construct(
         protected array $options = [],
     ) {
 
@@ -18,11 +21,12 @@ class UIAvatar
     /**
      * Create new instance
      *
+     * @param  array<string, mixed>  $options
      * @return static
      */
-    public static function make()
+    public static function make(array $options = [])
     {
-        return new static(config('ui-avatar', []));
+        return new static($options);
     }
 
     /**
