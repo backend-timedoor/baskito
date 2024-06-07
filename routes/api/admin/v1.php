@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Admin\V1\Admin\AdminController;
 use App\Http\Controllers\API\Admin\V1\Auth\ChangePasswordController;
 use App\Http\Controllers\API\Admin\V1\Auth\LoginController;
 use App\Http\Controllers\API\Admin\V1\Auth\MeController;
@@ -18,4 +19,6 @@ Route::middleware('auth:api-admin')->group(function () {
         Route::post('password', [ChangePasswordController::class, 'update'])->name('password.update');
         Route::get('permission', [UserPermissionController::class, 'index'])->name('permission.index');
     });
+
+    Route::apiResource('admin', AdminController::class);
 });

@@ -56,4 +56,12 @@ class User extends Authenticatable
             ->bold()
             ->generate($this->name);
     }
+
+    /**
+     * Determine if the user is a developer.
+     */
+    public function isDeveloper(): bool
+    {
+        return $this->email === config('auth.default_admins.dev.email');
+    }
 }
