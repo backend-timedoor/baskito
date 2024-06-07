@@ -9,6 +9,9 @@ trait HasRoleAndPermission
 {
     use BaseTrait;
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection<int, \Illuminate\Database\Eloquent\Model>
+     */
     public function getPermissions()
     {
         if ($this->permissions) {
@@ -24,9 +27,14 @@ trait HasRoleAndPermission
 
     public function getPermissionsCacheKey(): string
     {
-        return "{$this->getTable()}:{$this->getKey()}:permissions";
+        $key = cast_to_string($this->getKey());
+
+        return "{$this->getTable()}:{$key}:permissions";
     }
 
+    /**
+     * @return void
+     */
     protected function resetRoles()
     {
         $this->roles = null;
