@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\Admin\V1\Admin\AdminController;
 use App\Http\Controllers\API\Admin\V1\Admin\AdminRoleController;
 use App\Http\Controllers\API\Admin\V1\Auth\ChangePasswordController;
+use App\Http\Controllers\API\Admin\V1\Auth\CheckPermissionController;
 use App\Http\Controllers\API\Admin\V1\Auth\LoginController;
 use App\Http\Controllers\API\Admin\V1\Auth\MeController;
 use App\Http\Controllers\API\Admin\V1\Auth\ProfileController;
@@ -19,6 +20,7 @@ Route::middleware('auth:api-admin')->group(function () {
         Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::post('password', ChangePasswordController::class)->name('password.update');
         Route::get('permission', [UserPermissionController::class, 'index'])->name('permission.index');
+        Route::post('permission/check', CheckPermissionController::class)->name('permission.check');
     });
 
     Route::get('admin/role', [AdminRoleController::class, 'index'])->name('admin.role.index');
