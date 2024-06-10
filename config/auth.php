@@ -122,4 +122,11 @@ return [
             'email' => env('SUPER_ADMIN_EMAIL'),
         ],
     ],
+
+    'basic' => [
+        'default' => [
+            'username' => env('BASIC_AUTH_DEFAULT_USERNAME', 'timedoor'),
+            'password' => env('BASIC_AUTH_DEFAULT_PASSWORD', 'timedoor!@#$%'),
+        ],
+    ],
 ];
