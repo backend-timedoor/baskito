@@ -17,7 +17,7 @@ Route::middleware('auth:api-admin')->group(function () {
         Route::get('me', MeController::class)->name('me');
         Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
         Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::post('password', [ChangePasswordController::class, 'update'])->name('password.update');
+        Route::post('password', ChangePasswordController::class)->name('password.update');
         Route::get('permission', [UserPermissionController::class, 'index'])->name('permission.index');
     });
 
