@@ -1,0 +1,1786 @@
+{
+    "info": {
+        "_postman_id": "66524bc6-9a34-4ada-9a7f-fa26250e3557",
+        "name": "Admin API Baskito",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "31855489"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"email\": \"dev@timedoor.net\",\r\n    \"password\": \"new-password\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/login",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["auth", "login"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Login",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"email\": \"dev@timedoor.net\",\r\n    \"password\": \"new-password\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/login",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["auth", "login"]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Tue, 13 Feb 2024 10:40:44 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Caddy"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.3.2"
+                                },
+                                {
+                                    "key": "X-Ratelimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-Ratelimit-Remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "156"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IlVna2hZS2szTHRhN3E0aXNOMGRhVkE9PSIsInZhbHVlIjoicFZ2ZGloekNKS3pyVGp3YUxIdmVqalNMdWVFazIvVVZIVkplSU5RZVJGbEY1c2grZitGTHFtZm53Nk9NWkcvakcxSzBlRmU1OHRhaHZISUVKSnpnd2pBNmJHREFkK0tKQU1RY0VYWmdROHRWMjN5eTNCZFBVM3VEYjJMRXFyRUUiLCJtYWMiOiI0Y2YxMmFmYzJjYzgyMDU1NmE0NzcxZjBjYTJjYzMxYjA1ODNhMWFhNzJlODlkZTQ2NWE3M2E2NzZkMDRmMDFkIiwidGFnIjoiIn0%3D; expires=Tue, 13 Feb 2024 12:40:44 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "be_example_project_session=eyJpdiI6IjFLNC9Db0NkbUo0cS9Sa08vbVc3Q3c9PSIsInZhbHVlIjoia0dOSjVMdnBkYlVmNWgvNGhuUHpxNXdwalV0dENnNDYydzFFY0tpZ1h4cGMyVVlBS2hMcXFnSjJ3N3Y5Qkw2dVBqeUZZTU9aVDdWY3ExTFNIVkt6WmxxdXg5REV0Q3BwZXJ3dHUxMzRKLzc0OFl0OWwyd0NDKytnYnVPaGIzSTYiLCJtYWMiOiI5NmNmYmY3ZDhiNDM2OTI5NGRjZjk3NWNhZjVjNWY2NWMxZWFlMTY4NmUyNjg1YzVlNTJhZjEwYzQ2ZmYyMWMyIiwidGFnIjoiIn0%3D; expires=Tue, 13 Feb 2024 12:40:44 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Admin Demo 1\",\n        \"email\": \"demo@timedoor.net\",\n        \"photo\": \"https://ui-avatars.com/api/?size=512&name=Admin+Demo+1\",\n        \"role\": \"superadmin\"\n    }\n}"
+                        },
+                        {
+                            "name": "Wrong Credential",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"email\": \"bukan.admin@timedoor.net\",\r\n    \"password\": \"new-password\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/login",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["auth", "login"]
+                                }
+                            },
+                            "status": "Unprocessable Content",
+                            "code": 422,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:49:44 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6Ii9kTzhsVXVkTlZrbnhJWTh4cmhDZkE9PSIsInZhbHVlIjoia21XYWtrS281NThrV3Y4Q0FibWpqZG0zTG5XSXNpOHh2bVlJc3JvcmxCbUwvQ2hwKzU0bVNzV3J4Z2xHcGJobzlVRlB4aHpqK3Jpd042Yi9IWHJxZkVrbWZaU1Y5a3c0Ni94ZkxTZVRxc2tTS2hVRENBdDBjUFZ3TUNCRWxGNGciLCJtYWMiOiIwYmZlYTM0N2M4OTQ4MGJjNGUyYzc3YmFhYTc5YTRmN2QxZGUyMzU4MzVkN2UyMTRkMjQzZDZjZDk2OWNlMGY0IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:49:45 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6IlE0NzFmUzdXdG1aVFd4M2RSUWRta2c9PSIsInZhbHVlIjoiYVcrSENSR2NLc2VEN2lqN1B0YlB0LzMwNHQ4a2JyUGZGcGNLcXhjSWxLWXVPVE05a3FNOGo1OUR4L3MvTFpKbXJkMGtzaElKWkRMellaTHhpaU9QbktRYTBabDVuUDg3a1kwZ1ZNTENtNXJIWWRsNGZnT1k1VWltM21Md1NNSWIiLCJtYWMiOiJiYjRmNmE3OWFkOGNlNDVlYTU1ODQ3ZTZmMzE3Yzc5ZWFiZTU4MjBmOWJlYTMyYWVkOGJhNTRkMWI4YzgxYzYwIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:49:45 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"error\": {\n        \"code\": 422,\n        \"title\": \"Validation Error\",\n        \"message\": \"These credentials do not match our records.\",\n        \"errors\": [\n            {\n                \"key\": \"email\",\n                \"message\": \"These credentials do not match our records.\"\n            }\n        ]\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/logout",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["auth", "logout"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Me",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/me",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["auth", "me"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Me",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/me",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["auth", "me"]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:42:11 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IkFHeUNSSzl1RC8vV2Q4YUhUNE5pbXc9PSIsInZhbHVlIjoiUjdIN2E1VFI2UFNCSTNaWjJWMlcwQ2h5WGIvSER1ZC9xTnJTWnNoeGN4UHNWbTByNnVhWU5DWW9KMG95dHRodUJqOS9hSnU0UVYvQ20xdmsxYkpMbmg3b0ZJMFlLL1FMWTF5U1RvZm9XbWZXVFVkZlRSZWsySjAvbU4reFlkdWsiLCJtYWMiOiJhNzc2NmVhOWI5MTM1ODJiYmIzYzM1NjNmNGU1ZjVmODQ3NGIwMjEyMDRiZGQ3YWY5MTVkMTdhZjRkOTcwNmNiIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:42:12 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6IkIwbDNTWXd2Wnk0YzlzRnVyUmJMSVE9PSIsInZhbHVlIjoiYWpRUUFJQWF5M2RXZVNiSDZkcThvNUZiaXVOQzdDU0VzVEVmNmlTVHBqc1Nja2ZYTEQ5d0dJSDh5YU5vaUNPOGFBZjdxdFd3elAxd2h5VU94OWtDeVlWWmp1MXRuVHY5T040bUV1bFNpMEFPcnJFMUx6YmZqYW1qcEFIaFVzT0MiLCJtYWMiOiIzODhjODIwY2RmMzAzMTJkY2IwNzgxOWM4MmRiNDgxOTFlZDAxM2I4OTllMzg5MGJmZDVlYjQ5ZTMxM2JlMjY0IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:42:12 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Admin Demo\",\n        \"email\": \"dev@timedoor.net\",\n        \"photo\": \"https://ui-avatars.com/api/?size=512&bold=1&name=Admin+Demo\",\n        \"role\": \"super.admin\"\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Check Permission",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"permissions\": [\r\n        \"view.user\",\r\n        \"create.user\",\r\n        \"edit.user\",\r\n        \"delete.user\"\r\n    ]\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/permission/check",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["auth", "permission", "check"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Check Permission",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"permissions\": [\r\n        \"view.user\",\r\n        \"create.user\",\r\n        \"edit.user\",\r\n        \"delete.user\"\r\n    ]\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/permission/check",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["auth", "permission", "check"]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 03:10:12 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6Im1PL1hwUCtVTWN6WDAvQ3ArRjNtQ3c9PSIsInZhbHVlIjoiekl3eVVYZXBJaXd5MjRFb05iN3RxcmtnUXM5bGt4eGNYdkowRWlBelhyY0hyTVhuMklyL01SWE5sSjc5Qm95ZzhhbmpmanlDODI0UzZFSDJNWHVDaWtPSUpUUEljT2haaEV1UXNMeE9wZlJvWjJvdkF1eStlWGw4WGthMWRzYnQiLCJtYWMiOiI4Nzc0MjUyYmU0ZmE2MWUxOGM1ZDlmOTM2MTBiMDc3NjFjNWVkNmQ5NTA4YzQ5ZmM2Mzg2ZTgxMzBhNTAzZWVlIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 05:10:13 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6IklNb28wTWxDTllpRmZRenBVbGpiU1E9PSIsInZhbHVlIjoid3JwbXV0OWtuSS9wMFlML2pPaHZKOTZmRUw1ZEs2WnRKZjZLT2FkeVRsNE9UaUJQb3BSUnpHcHVqaGVVNHQrOHhEaU9FcXNocUJ6YnAxMXRFRWpTNlVQN2ZTbURqWEtSck5sT1Z5SXhIZ3VzVCswMU5OTzlaak9qcVIvNG5jbGEiLCJtYWMiOiI3YmY1MDJiZDJkMWIyMDFkZmRmZmMwMDE0YTk2OWIzYTMzMDllM2VjMGE2NGE0OGI1ZDVlZDMyYTVhMjJiZTZjIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 05:10:13 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"data\": {\n        \"view.user\": true,\n        \"create.user\": false,\n        \"edit.user\": true,\n        \"delete.user\": false\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Permission",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/permission",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["auth", "permission"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Permission",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/permission",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["auth", "permission"]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:43:06 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6InlHY3Jta3ljZ2JWdnB4R24yUUJlR2c9PSIsInZhbHVlIjoiWWRUbFhyM2NZQW40Z1Jlb0VEeVY2bFF6djdrdFgrSi9ZUXNpYUtnc210RUVlbFJqaXFYUDFIeFFKUDl4RmVnODB0dDJQYzBLZXRINWlmak9PNWc0WFA3WVh1YVZObkgxeVZGQXhKSEd4RXdXNktnSlBiTE5IQlZjRklTN2g0aUIiLCJtYWMiOiIwNGVjYzRkN2UyMmI3MWE4MjYxMmQ0NDVjMmUwNmI1MzFhYzIwYWU2NmZiOTBmY2U1MWY3YTdkOWJkZDg1Y2E4IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:43:06 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6Ikx6Y3pscHdHTnIwdEFOcEFNV3B0Q2c9PSIsInZhbHVlIjoiWTZFUkZYVysyd3Z0dk1ld2M5NGd0cElXdFNlZURZVllqUElWZE1VZU5tbnpWOEkxSGhYT0VSa1BYN0w1WnBLVGJaTnBVSTN2UG1hTWE4VU8zUGNhVWhNQ2dBVVpoZzNGeEVpSXhKcnlQQTUyNmhrTDFFVXpuOWtqL3JoZ3RUQVUiLCJtYWMiOiI4NDg5NmRhMjA3NzE5YzZmNzQ4ZjM0Zjc0MjY2MzAzZjA4NDRiZGY4Mzc0ZDEzNGYxNDlhNmE1OGFiZmIxNDE1IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:43:06 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"data\": [\n        {\n            \"name\": \"Can View Permissions\",\n            \"slug\": \"view.permission\"\n        },\n        {\n            \"name\": \"Can Edit User\",\n            \"slug\": \"edit.user\"\n        },\n        {\n            \"name\": \"Can View User\",\n            \"slug\": \"view.user\"\n        }\n    ]\n}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Profile",
+            "item": [
+                {
+                    "name": "Get Profile",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/profile",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["auth", "profile"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Get Profile",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/profile",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["auth", "profile"]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:43:41 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6Ild1eHVHamk0MXRUelFLaHdQUEs0b0E9PSIsInZhbHVlIjoiZ3dHRFU2TmNjeEU1Z3J2VTJsRDR1NFA0T2daM2VFMWxNR2dwWFpERUhPTWloOWQyUWJENSt1c2d3Rjkybm5BZ0IvK0RsSHNIQjVqS2lmMXFET09ORzNKVmN2M0hRUzhnMWNITHpyYnc5UlFhMDhxVTNNQnNackVDQVhYd3VpU0IiLCJtYWMiOiIwYjljOTYwZmE3ZTA1YTFmMTYzOWMyMTMwM2YzNWFiYmVmMTQwZGNlMjhlN2VhOTJiMTAzNmUyZTUwOTkzNDE1IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:43:42 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6IllkaHJDWVo4YllNT2JlYWZ1US9uMFE9PSIsInZhbHVlIjoiQUQyZU5oeGNQRlZqaU56R0R0WnVWRnJKb29kaHdhemIrWWRmK0dQTXZOdlZyNWljWDltMFBYVmppVTh3bDN3MkhWSE5sMGNHSHBjMkJBUGFkZzdLMEo3QlV4TWl2ak9PSWkyb0JnM04xVVFDVkoyVlZ1K2pKWnIwckkzQ2RNN0YiLCJtYWMiOiJjNmIwMTdjM2JmMGNhNjE2NDU0Mzg5YjI2OWE4MDYyZThhODc2NzlkYjJlMzJlZmVhNThjZjZkY2U0NjY1NGJkIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:43:42 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Admin Demo\",\n        \"email\": \"dev@timedoor.net\",\n        \"photo\": \"https://ui-avatars.com/api/?size=512&bold=1&name=Admin+Demo\",\n        \"role\": \"super.admin\"\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Update Profile",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"name\": \"Admin Demo\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/profile",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["auth", "profile"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Update Profile",
+                            "originalRequest": {
+                                "method": "PATCH",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"Admin Demo\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/profile",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["auth", "profile"]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Tue, 13 Feb 2024 10:41:19 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Caddy"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.3.2"
+                                },
+                                {
+                                    "key": "X-Ratelimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-Ratelimit-Remaining",
+                                    "value": "54"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "153"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IlVxQndOdWdod0pyWVhjWlUrK3ZXVkE9PSIsInZhbHVlIjoidDdTSERuZTVSSFVsU2FTaHZvRDZLNVFORnFWVmNpaEZuRGJVT3Q0VURjSTdlbGhDb1Z0eHlvTE9Va0xDc216Vnd2OVdWd1lUYVJGVCtWblFzZFZFcVR1M2p6Rytob3B5TVFNRzFvNHd2aUx4U0Rud3JkWHJtUk9lRjhnclpOYk4iLCJtYWMiOiI3NTc2YzZkMTMxNzBkN2FlZjFkNGZjNTVjYzEwY2M0NjM1NzVkNmEzODM2MWNiNjkxNTM5MGFjNzdhYjA5YTQ5IiwidGFnIjoiIn0%3D; expires=Tue, 13 Feb 2024 12:41:19 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "be_example_project_session=eyJpdiI6InhvbjlzR0puR2lIWlYzZE9CYlUrRlE9PSIsInZhbHVlIjoiUTlnQ2FVQllyWWVKSGVuZCtDZElGRHlHaFQxRGJrQTI2RUxaYklSRXNNNTFONU1kMHJsbE1heCt6Y2l4ZEhLcHBXdEZaaDNlUkwrNVBvNU15WVUrUHdEN25TR3YwU1p3dzlJTTh2S1dJYmRxZkluT2VNcUF2dnlZdUpXT1FiekkiLCJtYWMiOiI0Y2EzYThkNDdhMmMxMjRkNDZjZTVhNzhkM2Q5ZmY3NGE1N2IxNDc4ZjY2ZjViODc1M2FhNjNiMDUxNDZiZGJkIiwidGFnIjoiIn0%3D; expires=Tue, 13 Feb 2024 12:41:19 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Admin Demo\",\n        \"email\": \"demo@timedoor.net\",\n        \"photo\": \"https://ui-avatars.com/api/?size=512&name=Admin+Demo\",\n        \"role\": \"Super Admin\"\n    }\n}"
+                        },
+                        {
+                            "name": "Validation Error",
+                            "originalRequest": {
+                                "method": "PATCH",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/profile",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["auth", "profile"]
+                                }
+                            },
+                            "status": "Unprocessable Content",
+                            "code": 422,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:50:54 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IkpxWEE5d2pGa09CcyttN1MrbTBZTVE9PSIsInZhbHVlIjoiTHpOYy9xV1hTNVpobHdhWkt5RmVYcmMrMGdqVnFoSmhKd2g5Mis2dFh1SzJKNzNaNDZRbjhnVGFOQUdlem5JNzhJM242SC85R3plZDNUSGRzeTZTNjhPVkErNVBMRTBJTTVzU2FlYS83ZU9XN3Z5U1pOdTZZT3Fpbk9FczNmSXgiLCJtYWMiOiJkZTYxZTAyMzg5MDMwNzg2YWY1MmRhNmFmYWJiYmQ4YjZjYWE4MWQwYjM0MjJhYTEzNjg0ZTk0MTI5ODcwZGZhIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:50:54 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6Ims3VVpwQWtFRjEzVmFUYm9OV3hFa1E9PSIsInZhbHVlIjoiZTQwakdUYTFjcnowNERhVHpnY2F4TkVtOTNkbVNuZjYwM0wra1Y0emNxcVBTNUZ2Q0lvK2xFS1E3cVczYkQwenlxUWZrempXWTd3aSs2QnkzbGxvcHpUY0hOeWVqUnRUdktDRVZQMU1VYVFmQUxjSzV3VFpVYmlOVUJJaDYwMTQiLCJtYWMiOiI5ZDFhNzg3ZmU4ZGZmMDU3MjA4ODJiMjU5YWEwNGY0ZTdlN2MzNTExNDdjN2Y2MjNhZWYzOWYwMGEzMzVhODMzIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:50:54 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"error\": {\n        \"code\": 422,\n        \"title\": \"Validation Error\",\n        \"message\": \"The name field is required.\",\n        \"errors\": [\n            {\n                \"key\": \"name\",\n                \"message\": \"The name field is required.\"\n            }\n        ]\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Change Password",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"current_password\": \"old-password\",\r\n    \"new_password\": \"new-password\",\r\n    \"new_password_confirmation\": \"new-password\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/password",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["auth", "password"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Change Password",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"current_password\": \"old-password\",\r\n    \"new_password\": \"new-password\",\r\n    \"new_password_confirmation\": \"new-password\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/password",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["auth", "password"]
+                                }
+                            },
+                            "status": "No Content",
+                            "code": 204,
+                            "_postman_previewlanguage": "plain",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:40:49 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IlhIRmJOV2lCVENNL0RFamI2eGlCZkE9PSIsInZhbHVlIjoidW5NaUtLdTRzOFNIaXFpU3MvMGYvS3dxWThaZlQreDZMSHN5NDAxMjNsQmJabzZBOVorRVZsdHRmbDJUdk9iRXljWUg4amxkZ3M5aHVxU3BXbFdQVzVPSlVHdnZMRTZxeEhTNWRRSCtOOFdEcDh0UVNLY3p6NnhXRnVjTWFFNGciLCJtYWMiOiIxODIyYzUwMzM0YjkwYzM1MGUyMzk4NDE1ZGJjN2QxYjBlMWI0NmIxNjIyZGI3NzhlOGIxNWZlYzk4NzcxMGVjIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:40:49 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6IlV1UmZPSFVoa21iSGFMbE1taHp4Y1E9PSIsInZhbHVlIjoicGs2QWVINm9oRFYzSkZ1b2RIN0NlTUZnYk9WaGdTeUc2NnZMcE02RjFCZ09tNlNYOVFib2NJblJ4TS9BSVkrSkQ4aWdQdUU0UWY3ekJKNnRsSzUzYTVvOEJ5K2NaV3IyTzRIV3hOREtjTklWRU9KRWIwMDM2TDFLYWxidTdya0ciLCJtYWMiOiJiZmEzMTNmYWQ1ZGMzMWViYTIzMzkwNWRkMmVjYjIwY2YwODY3ODZhOWRiMWI2NzMyMWJhY2YyZDkyZDI0MmNlIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:40:49 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": null
+                        },
+                        {
+                            "name": "Validation Error",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"current_password\": \"wrong-password\",\r\n    \"new_password\": \"new-password\",\r\n    \"new_password_confirmation\": \"wrong-password\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/password",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["auth", "password"]
+                                }
+                            },
+                            "status": "Unprocessable Content",
+                            "code": 422,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:51:58 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6ImZoVmpjd3ZvdUhteGo0b0k0YnpScUE9PSIsInZhbHVlIjoiNDVpNnMwT3RSR00vT2N4YmhKYkRZRnBpMGFZOUdZdmtOUEtTaXpiNVEzNmNNRWh3ZVkzT1k0SGMwNjZMRW9CaGxka0JERnA5TkE2V3ZWSjNVZmw2K0lOMnNnR2JYZnhaQ0NmZjc3OExWRE5jVUoxc2FPNW05MllpOWxOY0FQazIiLCJtYWMiOiJkMzVkOGMxNzEyNjM2Mzg4Nzk2YmM5YjRiZmI5YTM4MDE0NGY0Nzk5YThhNDFmZTNlNmVlNGI0ZjU2YjZiM2QxIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:51:59 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6IkFjcTJDNzNsSUhGL2JtaE5zSFY4M3c9PSIsInZhbHVlIjoiZ3lNN2k2N283cHk2MkhKUElrNWk4c3RteDdaa3dBQ2JYZEUvV0FmTmd1N0R4azhBdEMzTHdPN3ExSk9BOGN1ZEw2dnhyY2lwcUpjNWkwT0g1clQ4c1VCT1QveWJqZGZDTkNxS3FlVElOUjZqUVpuVVl1SnJFQm5BUWJsN0M1TlQiLCJtYWMiOiJjY2EwYzM3ODExYmI5OThlODBiZmRjZTU4ZTliZGViMDdkYjU2NzE0MjVhOWZiNzVlZTBmNGUyNWE1ZWY4NjZmIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:51:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"error\": {\n        \"code\": 422,\n        \"title\": \"Validation Error\",\n        \"message\": \"The password is incorrect. (and 1 more error)\",\n        \"errors\": [\n            {\n                \"key\": \"current_password\",\n                \"message\": \"The password is incorrect.\"\n            },\n            {\n                \"key\": \"new_password\",\n                \"message\": \"The new password confirmation does not match.\"\n            }\n        ]\n    }\n}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Admin",
+            "item": [
+                {
+                    "name": "Admin List",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/admin",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["admin"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Admin List",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{baseUrl}}/admin",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["admin"]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:46:56 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IjliUE9HK2E3OWR5ZnlqOGlsbEd0VlE9PSIsInZhbHVlIjoiZkQyS2lveTlyaS9Ja1BGNTZWZmU0eXhGeS9sZnUxeDhzWFhiSi9Tak50UTJhdTJuUjVWNHFseFh0aTcvcTlvbXFaYzB6NUVmL0l3VjFLS2RqbVQ2VmQ5VjBaeDNVQlQ4N2hENHRHU1l6c0hMV1ovak1GSTBYV0RGNVN6SzlpbE0iLCJtYWMiOiJiYzQ1MzY2ZjM4OTI1MmRjNjllZTY2YzlhMzA4MTRkNzdkMTJmN2MxMTQ5NmQxNWY4NDgwZmVmN2NkYzZhNTBkIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:46:56 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6IlJhSVZvSE9nR2ErNHg3b2YySEdVN0E9PSIsInZhbHVlIjoiQ0FpaVFtT3hCazVhVUxoaklFWHhuMG13OC9WZzZLenZsOVRaM3JzYzIwTkdDVEh0NE4xcmR4SDI3Y0xqUmRmTk9VSHhLenhYSTJnZ21EU1Jwd0RSalNMNHdhQXBSOE5QbDV6b1AzbHZpK3RVU0Q1aEtxL3F6cFhNZ3ptY1V4REoiLCJtYWMiOiIyYjk3OThlYTUwNzdlZTQxN2RjOWNlMzc0MTg5YjcxOTU1YjY3MmNhOTgzOTNkYjY4MGNiOGUyYjkxYzkwNjQ2IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:46:56 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"admin biasa\",\n            \"email\": \"admin.biasa@gmail.com\",\n            \"role_name\": \"Admin\",\n            \"photo\": \"https://ui-avatars.com/api/?size=512&bold=1&name=admin+biasa\"\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Admin Demo\",\n            \"email\": \"dev@timedoor.net\",\n            \"role_name\": \"Super Admin\",\n            \"photo\": \"https://ui-avatars.com/api/?size=512&bold=1&name=Admin+Demo\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://baskito.test/api/admin/v1/admin?page=1\",\n        \"last\": \"http://baskito.test/api/admin/v1/admin?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://baskito.test/api/admin/v1/admin?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://baskito.test/api/admin/v1/admin\",\n        \"per_page\": 10,\n        \"to\": 2,\n        \"total\": 2\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Admin Detail",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/admin/1",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["admin", "1"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Detail Admin",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{baseUrl}}/admin/1",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["admin", "1"]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Tue, 12 Mar 2024 06:44:59 GMT"
+                                },
+                                {
+                                    "key": "Phpdebugbar-Id",
+                                    "value": "X76e55fe0c905ec3e41502b1b23da3846"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Caddy"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IllsaUVsQzBKY0dFaDg4eGdQOFhzOUE9PSIsInZhbHVlIjoiZ01OOXhBdmQxa1BtQTJNblB2NW50WUh1MnU3dkhScndFbll4YUxETnJhL25KTVM2azQ5bHZNYkV6WmErWWdRWURreTNmUmpES1J4VStmYnJHTWJweEhGeDJBdVg4N0xwMkJQLy8vZ3JEK1k3NCtFa0dCblhYN0huNG51Y3dHcE4iLCJtYWMiOiI4ZGQ2ZDkzNmNiN2EzMzRlMzAzZTk0Mzc3NWFmNDNhZjcxZDQ3MmNlMjliNjFjMzE0MWY1MDg4YWJmMDQ2Y2EwIiwidGFnIjoiIn0%3D; expires=Tue, 12 Mar 2024 08:44:59 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "baskito_session=eyJpdiI6IlI5WEZtZWUvdkQ3LzN0anM3aUx3eGc9PSIsInZhbHVlIjoiZFNYSlV2QWdhK1VndXNQK3RTTkJBNVBGNkh5azJSWE02Q2QrVHFLSnVjZTB3OFRBRHpIY2hndi9kaCtaTEJ5dkNiVUJHOWgyaXlLNzVtdDVJQUc2L3JEY1BPamYrWFRyYVgweC9rOTBDSGZHRVZ0U0RzajhxZ1ZCYkpGQVdhUHciLCJtYWMiOiIzNzAwZmM3OGQxZDgxNzYwMzJkMThiMzc2NWMzYmJlY2VhMDk4YjkyNGE3ZWY0NzYyYmMxMjBkMzQ3YmNmYWU1IiwidGFnIjoiIn0%3D; expires=Tue, 12 Mar 2024 08:44:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.3.2"
+                                },
+                                {
+                                    "key": "X-Ratelimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-Ratelimit-Remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "169"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Timedoor Indonesia\",\n        \"email\": \"demo@timedoor.net\",\n        \"role\": \"super.admin\",\n        \"photo\": \"https://ui-avatars.com/api/?size=512&name=Timedoor+Indonesia\"\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Create Admin",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"name\": \"admin\",\r\n    \"email\": \"admin@gmail.com\",\r\n    \"role\": \"admin\",\r\n    \"password\": \"password123\",\r\n    \"password_confirmation\": \"password123\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/admin",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["admin"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Validation Error",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/admin",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["admin"]
+                                }
+                            },
+                            "status": "Unprocessable Content",
+                            "code": 422,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:53:14 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6Ik16Z2NCaVNBbm9NT2FnRWNGMmZFelE9PSIsInZhbHVlIjoiWXZWMnVHdVdCaTZYM3g1cUlLMEhpUHpSUjRYeDIxVU9tRTl3WHRDbkNVeCttamRmMHFsekJFN1VmZTIvcnR4MEVBa2c0ZzFkMGZXK1hocWRyNVJaQTJUWHJzT1FyTzRLUUI0cEdlUElUWWhSNVpuTXd1T1BwR01EVFNFMjlDZDkiLCJtYWMiOiJkMWMxMTI1YzI3ZDFmOGM5MTYwZjdkMzdhMGQ2YjFiOWI5YzJkYjU1NjliNzhlZmJhZGExZGFjYTA2YTU5OWQ5IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:53:14 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6ImlYTlY4SUtDVWp2RFRsVmpJQXo3YVE9PSIsInZhbHVlIjoiaWxMUmU2M0Z4T1BWVS9GYUF1bzB4bUgxdUhCYWU5R2J2N3NSa2VVSkliWlJySG45VmRrOVBJN2ZwT2pPeWlKZzdHNlkvaW5CcThHa0xmRTNWVnpCMERhcy94YUwxcUs0eFljbHJvUWErWlc3MktLMStidHZ6QnY5Vkx2dlJ3L0EiLCJtYWMiOiJlYjRlNWEyZTlmZGJkMjJhMzBlYmRmZGY5NjUxZmFkYjQ3YjM1MTZiNTQ1ZjljNTQ3ZWVjYjgzOWRkNmE5ZDA5IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:53:14 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"error\": {\n        \"code\": 422,\n        \"title\": \"Validation Error\",\n        \"message\": \"The name field is required. (and 3 more errors)\",\n        \"errors\": [\n            {\n                \"key\": \"name\",\n                \"message\": \"The name field is required.\"\n            },\n            {\n                \"key\": \"email\",\n                \"message\": \"The email field is required.\"\n            },\n            {\n                \"key\": \"role\",\n                \"message\": \"The role field is required.\"\n            },\n            {\n                \"key\": \"password\",\n                \"message\": \"The password field is required.\"\n            }\n        ]\n    }\n}"
+                        },
+                        {
+                            "name": "Create Admin",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"admin\",\r\n    \"email\": \"admin@gmail.com\",\r\n    \"role\": \"admin\",\r\n    \"password\": \"password123\",\r\n    \"password_confirmation\": \"password123\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/admin",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["admin"]
+                                }
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:53:48 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IlJkUFlrc2dhUjB2WjUrVFkrWTR3MWc9PSIsInZhbHVlIjoiaHZwTXJiOXZPNjNza2xtQnBDekw4bTFMM0c1UWMwQ3BHUDVZbWQ2QjF2MXZ6QmdNN0kzSERwZUY5S3lJbFMvQVBLVHBVSzJ4QitsblFZYkJlcmxVVmhIRWc4T0hWRWU3WTJKbGVVZXFZSDFXQmk5b1JaSytkVnFJeXEzb1VRc2oiLCJtYWMiOiJjNGViYTVhZWFlNmUwNzc1YTc0MjY1M2E4NjQyOWNlMDU0MzFhNzJjM2U0ODc4NTA1MjZlY2E0NWNmNDllYWI5IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:53:49 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6Im5SeHd5T05XRTU3MDdaa01YQVg3Z3c9PSIsInZhbHVlIjoiVGpBL3puTW9qcVVKYkg5UmhxUmpZbVFwMmRsRklUOEdxRVh4blpZVWVCanN6N1hHTUVXUEJCNmRaUWVPdm9rdWU1NjdRR2c2T1M5UGZlWEVMRE9WRkc3cVZzNjkvWDdxNEtXbGZuL1JlUDh4OStvaFk0ZlNqbHdGM04wb0VIZzciLCJtYWMiOiJjOWZjYTJlYjk3NDZlMjRjZjYxNmQ0NWZiZTVjZWZiZDlkMTM0NWUzMTUzZmMxYzc2NDNkMjY0MDExYjcyZmM1IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:53:49 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"data\": {\n        \"id\": 3,\n        \"name\": \"admin\",\n        \"email\": \"admin@gmail.com\",\n        \"role\": \"admin\",\n        \"photo\": \"https://ui-avatars.com/api/?size=512&bold=1&name=admin\"\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Update Admin",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"name\": \"Admin Biasa\",\r\n    \"role\": \"admin\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/admin/1",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["admin", "1"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Update Admin Without Password",
+                            "originalRequest": {
+                                "method": "PATCH",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"Admin Biasa\",\r\n    \"role\": \"admin\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/admin/2",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["admin", "2"]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:47:34 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "57"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6ImMzY1JJVENEb3Z6cjFpOTFIajFhcXc9PSIsInZhbHVlIjoiRnpvNVp5RlFsblNKYmVpNUp0aFU5L2x6dWxGcm52RlRWUzlPSFNzN3ZnTkpNa3VIRFl3UFA1cXpiVDZvTWovWnh5cnpRSzN0eVJXOFNJT3dndHl2eTNrM08vc25aUENtR0FTMmJJZzhZNE9oUUV1T09DRjJrMzRSdVAvRzN4d3oiLCJtYWMiOiIyMTQ2YjI4MjM3ODQzMGYyYzJlMmM1Y2U5ODczNzNiZmZhNDNiNmUzYmMzMjg5YzI3MjY1YjViNzJlYzFkM2JmIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:47:35 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6IjYzNjAwdEJNcGNHOGNSNmtXZzRxMnc9PSIsInZhbHVlIjoidGZDWTRaamE2YVZFOHZYMEZOMlVhNHpMWm5tQkNBeUpja3UxVnJzUjdHZ2s5ZGovRUNKc05UeDlVVE8weTl6WWFPR3J5VTJtblRTNjZqSWpqRmtWV1RGK3YyYjJWYlY2QVNIOUZtTmZYYWltTWhXNHhoMWNTRVhDVlVGUmdLM2oiLCJtYWMiOiI3MjJhNDYwYTMwNjA5MmFkODFmNjc2NjYxNmE1MjhiYzZlZGFiMzAwMzVkY2M4MjFlNDBkNjYxN2QzYTM2MDNhIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:47:35 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"Admin Biasa\",\n        \"email\": \"admin.biasa@gmail.com\",\n        \"role\": \"admin\",\n        \"photo\": \"https://ui-avatars.com/api/?size=512&bold=1&name=Admin+Biasa\"\n    }\n}"
+                        },
+                        {
+                            "name": "Update Admin With Password",
+                            "originalRequest": {
+                                "method": "PATCH",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"Admin Biasa\",\r\n    \"role\": \"admin\",\r\n    \"password\": \"new-password\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/admin/2",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["admin", "2"]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:48:27 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6InFDYXNINkkrelNwNHhqSERYYVlmcWc9PSIsInZhbHVlIjoidmROSFJGOXBTRndTMlNYR2hyeVA5YWxuaEY0ZUtaVHBjTXNvT1V2TDJHVm9xRVRndHFlQVovQWUwSXlFZFhxWkd0M0gvandYcEZRZGdSM01vcW0zYzJEdzcwN3l6UlhEYkRxWTh0ZGRuS25JOEM3ZVc2cHdjV2dMeW1tczR2WlQiLCJtYWMiOiJiNjcwNGQ0MjA4OGQ1ZDYzZTc2NWQxYjBkZTU0MzExNTFkZThkNjEwMzUwYTg3NDI3MzU3ZDQyOWE1ZDcwZWU0IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:48:27 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6IjlOZEFmcDBEWlRmbGdNdCtHYnN4MVE9PSIsInZhbHVlIjoia3A1QmlCc3EwN25RdVRnMkN5NFdwNjlnMEY0dDdHUlk1UEdxVDhXbWUxa3ZRMWdTemJzMmZrcTZCZWtZZ1Q3Nnd4OVhTb1FQWUtlRm9IZ1QxYXBTeXlKVlg3bk9RdTB4YWNTNnJpNWVVV2RXbGsyK1VaUGNPK2oyaTkwcVhYWVAiLCJtYWMiOiI2NWY1ZjdhNGQ4M2I2NjQ5YmY0ODJjMjJhNWMyOWI2YjQ4YjVkODE2YTVlY2JlNGU5YTA2Yzk5MmYxNzQxNWI3IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:48:27 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"Admin Biasa\",\n        \"email\": \"admin.biasa@gmail.com\",\n        \"role\": \"admin\",\n        \"photo\": \"https://ui-avatars.com/api/?size=512&bold=1&name=Admin+Biasa\"\n    }\n}"
+                        },
+                        {
+                            "name": "Cannot Edit Your Own Profile",
+                            "originalRequest": {
+                                "method": "PATCH",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"Admin Biasa\",\r\n    \"role\": \"admin\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/admin/1",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["admin", "1"]
+                                }
+                            },
+                            "status": "Forbidden",
+                            "code": 403,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:54:13 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6ImZNaUVSR0dWQ1hXZU9oT0Z3Y0dYOXc9PSIsInZhbHVlIjoiQm10YnRyZWFiUW1NQlJXbTZFaUNvSHJNVm1zTUhXZ1JIandoSjhUQ0ZrVEZkeHJWYzlzRm4zdWpyYkhrelpna1JoTmttZTFEaXNVVUhkbm9rNWhUZzVpNUJKdTN6Q1V0WjNqMGMrWDJEN1Y2MVdyQjVZYWYzdEE5MUFMUWpwd3UiLCJtYWMiOiJjZGQxZGEyMThmNjBhNWM4ZDU1MjNmZDExNTBiNTUxNjNmZWYwYmI3MjU0OGYwY2U5NDI4YWY3YTJlYzE3MzMxIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:54:14 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6ImxpR1VsQmpEZ0hxc2kyTDVjcWQ1Mmc9PSIsInZhbHVlIjoiT2pYL080V2tIN3NXUG5OZ0ZzMVR6YWs3ekdxbGk2c2VRa2dWdDdpWE9NR3h4V01RczJaYmVYMnhtbFBNQjUyRDIzRCthYS9GbUFkMExDVE1wK1ZpbDZiRm5veFJrNUlwQnJadUNzaVN2MTlEZWhGUlVRdFppYWFnL3hFVmpjaC8iLCJtYWMiOiJmMmY1YjFlNzU5Y2EzZThiZjgzZmMxNGJiOThkMGIyMWFiMzc4YjFhYmIwODdhYTc5YTEzZjYxMjZjMGIyZGY4IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:54:14 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"error\": {\n        \"code\": 403,\n        \"title\": \"Access Forbidden\",\n        \"message\": \"You cannot edit your own profile in here.\",\n        \"errors\": []\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete Admin",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/admin/1",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["admin", "1"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Cannot Delete Your Own Profile",
+                            "originalRequest": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{baseUrl}}/admin/1",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["admin", "1"]
+                                }
+                            },
+                            "status": "Forbidden",
+                            "code": 403,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:55:06 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IjVRdVZRcVVEK1J0eEN6NVNTWlpETXc9PSIsInZhbHVlIjoidzBEaTRuRndjNzdTSDhabmNlakZ5ZEQzcTJEdlYxeWcrdVlqYXpqaVFCTjllckhZZ0tTVU43aHJTUFNmdEtLaW1CUnVuVW8yNERidENQa1BHMjBBR1N1Y2VXc2E5UmdEL1NjV0lORlFJVlJSU09vUXZ5WjNyQUo5dWQvMEVpemQiLCJtYWMiOiIyMDgzMTk2MjUyNGU2MDg5ZWI0MWMyNzEzMmMyYTMwMDViNTM0MTJkZWFhODMzNzA4OGI4NjY1ZTU2MzFlNDQ1IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:55:07 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6IlBoQjZ0YmVoRklBekxRcERZM2d2MUE9PSIsInZhbHVlIjoiU3Y0QWdDWFFtRWRleHc0U0lJNktWem14N05adjZZYjVMUkp6SVdEVmdQM2N0dUxEVndJN09ZeEZFTGZ6cjZKdjBFSksxMXp6c2gwZXo5UG9RNWI2TktDUHVkT3Raa0VPYWhKVkNqR3V6N0JUMDc0Wk50dmtlaWpTckkvaytidHYiLCJtYWMiOiJmZGQ0ODlhNDhjMDFhMzIwOTIxMjQ1YjhhNmJmNDk4NmE4NWRkODgzNTRlNWY5YjcxYmQzZjk1ZDZkNDRhM2UwIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:55:07 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"error\": {\n        \"code\": 403,\n        \"title\": \"Access Forbidden\",\n        \"message\": \"You cannot delete your own profile.\",\n        \"errors\": []\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Available Role",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/admin/role",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["admin", "role"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Role",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{baseUrl}}/admin/role",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["admin", "role"]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 10 Jun 2024 02:40:31 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1q PHP/8.1.9"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/8.1.9"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IkkvV0o2WWtpK2d1ZDhPQnBnVTh0Wmc9PSIsInZhbHVlIjoialZib1Bjb0tNaVVMU0VQRkI2SVNnZUUxU2JQK0p0cm5RZW41MWtRVlVENTlTU1l0QUJvZzZRL0VZNjVqSml3cUJ0eGtCOUFJRHRwZ0tOdFdyTHV1WVRmVjRVekpTb3RNeXJWTFc5QS91ZmNLOUdjVGIyQ3JQdXNpci9DYXVGcTciLCJtYWMiOiJkYjk1MTQ2ODI1MzRmMzA0NjE3M2ZjOTJiMThiMjllZjE2ODIyZjk2NzM1MTZiNGQ2ZGEzMWVlOTA0YTc3MWNkIiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:40:32 GMT; Max-Age=7200; path=/; samesite=lax"
+                                },
+                                {
+                                    "key": "Set-Cookie",
+                                    "value": "starter_kit_session=eyJpdiI6ImJpQXBDK0pNK1VCM0w2Tm9wZXY2aEE9PSIsInZhbHVlIjoidGEvSmZ6TkkxcE5PYis5UTBYV1BCSjRPeGtlRmhlVWF3Nk5nK1dsWmpiTzFyejhOWmJlYmREVitid3RaUjdwN09BTHlLcjFMeUdzallQVjNMSVlQT204Y083THBwakppUHp4QVpjQVlsNG5QaWplaFg4bnQ0Mmk2NWJlRlRzcEUiLCJtYWMiOiIzNDRjNzA2M2VmNmZiMTIxMmE3NTkwZmJmODMwYjU2ZmJjYzFlYWFhMzg3MDA5NjJiYjU2ZDIwZjMyYjBkNjU0IiwidGFnIjoiIn0%3D; expires=Mon, 10 Jun 2024 04:40:32 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                                },
+                                {
+                                    "key": "Keep-Alive",
+                                    "value": "timeout=5, max=99"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "Keep-Alive"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"data\": [\n        {\n            \"slug\": \"admin\",\n            \"name\": \"Admin\"\n        },\n        {\n            \"slug\": \"super.admin\",\n            \"name\": \"Super Admin\"\n        }\n    ]\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                    "let baseServer = pm.collectionVariables.get('baseServer');",
+                    "",
+                    "if (pm.environment.has('baseServer')) {",
+                    "    baseServer = pm.environment.get('baseServer');",
+                    "}",
+                    "",
+                    "pm.request.headers.add({",
+                    "    key: \"Origin\",",
+                    "    value: baseServer",
+                    "});",
+                    "",
+                    "pm.request.headers.add({",
+                    "    key: \"Accept\",",
+                    "    value: \"application/json\"",
+                    "});",
+                    "",
+                    "pm.sendRequest(baseServer + '/sanctum/csrf-cookie', function (err, response) {",
+                    "    if (err) {",
+                    "        console.error(err);",
+                    "        pm.execution.skipRequest();",
+                    "    } else {",
+                    "        const jar = pm.cookies.jar();",
+                    "",
+                    "        jar.get(baseServer, 'XSRF-TOKEN', (err, cookie) => {",
+                    "            if (err) {",
+                    "                console.error(err);",
+                    "                pm.execution.skipRequest();",
+                    "            } else {",
+                    "                pm.request.headers.add({",
+                    "                    key: \"X-XSRF-TOKEN\",",
+                    "                    value: cookie",
+                    "                });",
+                    "            }",
+                    "        });",
+                    "    }",
+                    "});"
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [""]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseServer",
+            "value": "baskito.test",
+            "type": "string"
+        },
+        {
+            "key": "baseUrl",
+            "value": "baskito.test/api/admin/v1",
+            "type": "string"
+        }
+    ]
+}

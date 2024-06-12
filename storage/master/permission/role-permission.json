@@ -1,0 +1,10 @@
+[
+    {
+        "role": "super.admin",
+        "permissions": ["view.permission", "edit.user", "view.user"]
+    },
+    {
+        "role": "admin",
+        "permissions": ["view.user"]
+    }
+]

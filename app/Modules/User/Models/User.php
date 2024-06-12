@@ -5,10 +5,11 @@ namespace App\Modules\User\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Supports\Models\Concerns\HasPassword;
+use App\Supports\Models\Concerns\HasRoleAndPermission;
+use App\Supports\UIAvatar\UIAvatar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
@@ -47,4 +48,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getPhotoProfileAttribute(): string
+    {
+        return UIAvatar::make()
+            ->size(512)
+            ->bold()
+            ->generate($this->name);
+    }
+
+    /**
+     * Determine if the user is a developer.
+     */
+    public function isDeveloper(): bool
+    {
+        return $this->email === config('auth.default_admins.dev.email');
+    }
 }

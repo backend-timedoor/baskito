@@ -1,0 +1,779 @@
+openapi: 3.0.0
+info:
+  title: The Admin API
+  version: 1.0.0
+  description: |
+    The API for Admin App is using session instead of token.
+
+    Please read <a href="https://laravel.com/docs/10.x/sanctum#csrf-protection" target="_blank">this Laravel docs</a> for more information about Authentication.
+  contact:
+    name: Aryan Jaya
+    email: arja@timedoor.net
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+tags:
+  - name: auth
+    x-displayName: Auth API
+    description: Authentication endpoint
+  - name: profile
+    x-displayName: Profile API
+    description: Profile endpoint
+  - name: admin
+    x-displayName: Admin User API
+    description: Admin User endpoint
+  - name: 422_error
+    x-displayName: Validation Error (422)
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/ErrorResponse" exampleRef="#/components/examples/422Error" />
+  - name: 500_error
+    x-displayName: Server Error (500)
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/ErrorResponse" exampleRef="#/components/examples/500Error" />
+servers:
+  - url: https://example.com/api/admin/v1
+    description: production server
+paths:
+  /auth/login:
+    post:
+      operationId: auth.login
+      summary: Login
+      description: Login endpoint
+      tags:
+        - auth
+      security: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/LoginResponse'
+        422:
+          $ref: "#/components/responses/422Error"
+
+  /auth/logout:
+    delete:
+      operationId: auth.logout
+      summary: Logout
+      description: Logout endpoint
+      tags:
+        - auth
+      security:
+        - cookieAuth: []
+      responses:
+        204:
+          description: success
+        401:
+          $ref: "#/components/responses/401Error"
+
+  /auth/me:
+    get:
+      operationId: auth.me
+      summary: Get Current User
+      description: Get current user
+      tags:
+        - auth
+      security:
+        - cookieAuth: []
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/MeResponse'
+        401:
+          $ref: "#/components/responses/401Error"
+
+  /auth/permission:
+    get:
+      operationId: auth.permission
+      summary: Get User Permission
+      description: Get User Permission
+      tags:
+        - auth
+      security:
+        - cookieAuth: []
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: permission name
+                          example: Can View User
+                        slug:
+                          type: string
+                          description: permission slug. use this slug to check user permission
+                          example: "view.user"
+        401:
+          $ref: "#/components/responses/401Error"
+
+  /auth/permission/check:
+    post:
+      operationId: auth.permission.check
+      summary: Check User Permission
+      description: Check User Permission
+      tags:
+        - auth
+      security:
+        - cookieAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                permissions:
+                  type: array
+                  items:
+                    type: string
+                    description: permission slug to check
+              example:
+                permissions:
+                  - "view.user"
+                  - "create.user"
+                  - "edit.user"
+                  - "delete.user"
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    description: the key is permissions you pass and the value is boolean.
+                example:
+                  data:
+                    "view.user": true
+                    "create.user": false
+                    "edit.user": true
+                    "delete.user": false
+        401:
+          $ref: "#/components/responses/401Error"
+        422:
+          $ref: "#/components/responses/422Error"
+
+  /auth/profile:
+    get:
+      operationId: auth.profile
+      summary: Get User Profile
+      description: Get User Profile
+      tags:
+        - profile
+      security:
+        - cookieAuth: []
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/MeResponse'
+        401:
+          $ref: "#/components/responses/401Error"
+    patch:
+      operationId: auth.profile.update
+      summary: Update User Profile
+      description: Update User Profile
+      tags:
+        - profile
+      security:
+        - cookieAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                  description: Name of customer
+                  example: Jack Mi
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/MeResponse'
+        401:
+          $ref: "#/components/responses/401Error"
+        422:
+          $ref: "#/components/responses/422Error"
+
+  /auth/password:
+    post:
+      operationId: auth.password.update
+      summary: Update password
+      description: Update password endpoint.
+      tags:
+        - profile
+      security:
+        - cookieAuth: []
+      requestBody:
+        content:
+          applcation/json:
+            schema:
+              properties:
+                current_password:
+                  type: string
+                  description: Current password of customer
+                  example: password
+                password:
+                  type: string
+                  description: New password of customer
+                  minLength: 8
+                  example: newpassword
+                password_confirmation:
+                  type: string
+                  description: New password confirmation of customer
+                  minLength: 8
+                  example: newpassword
+      responses:
+        204:
+          description: success
+        401:
+          $ref: "#/components/responses/401Error"
+        422:
+          $ref: "#/components/responses/422Error"
+
+  /admin/role:
+    get:
+      operationId: admin.role.index
+      summary: List Admin Role
+      description: List Admin Role endpoint.
+      tags:
+        - admin
+      security:
+        - cookieAuth: []
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        slug:
+                          $ref: "#/components/schemas/AdminRole"
+                        name:
+                          type: string
+                          description: Role Name
+                          example: Super Admin
+        401:
+          $ref: "#/components/responses/401Error"
+
+  /admin:
+    get:
+      operationId: admin.index
+      summary: List Admin
+      description: List Admin endpoint.
+      tags:
+        - admin
+      security:
+        - cookieAuth: []
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/AdminListItem"
+                  link:
+                    $ref: "#/components/schemas/PaginationLinks"
+                  meta:
+                    $ref: "#/components/schemas/PaginationMeta"
+        401:
+          $ref: "#/components/responses/401Error"
+        403:
+          $ref: "#/components/responses/403Error"
+    post:
+      operationId: admin.store
+      summary: Create Admin
+      description: Create Admin endpoint.
+      tags:
+        - admin
+      security:
+        - cookieAuth: []
+      requestBody:
+        content:
+          applcation/json:
+            schema:
+              $ref: "#/components/schemas/CreateAdminRequest"
+      responses:
+        201:
+          description: create admin success
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: "#/components/schemas/AdminDetail"
+        401:
+          $ref: "#/components/responses/401Error"
+        403:
+          $ref: "#/components/responses/403Error"
+        422:
+          $ref: "#/components/responses/422Error"
+
+  /admin/{id}:
+    get:
+      operationId: admin.show
+      summary: Detail Admin
+      description: Detail Admin endpoint.
+      tags:
+        - admin
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            $ref: "#/components/schemas/DataID"
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: "#/components/schemas/AdminDetail"
+        401:
+          $ref: "#/components/responses/401Error"
+        403:
+          $ref: "#/components/responses/403Error"
+        404:
+          $ref: "#/components/responses/404Error"
+    post:
+      operationId: admin.update
+      summary: Update Admin
+      description: Update Admin endpoint.
+      tags:
+        - admin
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            $ref: "#/components/schemas/DataID"
+      requestBody:
+        content:
+          applcation/json:
+            schema:
+              $ref: "#/components/schemas/UpdateAdminRequest"
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: "#/components/schemas/AdminDetail"
+        401:
+          $ref: "#/components/responses/401Error"
+        403:
+          $ref: "#/components/responses/403Error"
+        404:
+          $ref: "#/components/responses/404Error"
+        422:
+          $ref: "#/components/responses/422Error"
+    delete:
+      operationId: admin.destroy
+      summary: Delete Admin
+      description: Delete Admin endpoint.
+      tags:
+        - admin
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            $ref: "#/components/schemas/DataID"
+      responses:
+        204:
+          description: success
+        401:
+          $ref: "#/components/responses/401Error"
+        403:
+          $ref: "#/components/responses/403Error"
+        404:
+          $ref: "#/components/responses/404Error"
+
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: laravel_session
+  schemas:
+    # Base Schema
+    Email:
+      type: string
+      description: Email of customer
+      maxLength: 255
+      example: customer@gmail.com
+    DataID:
+      type: integer
+      description: ID for this data
+      example: 1
+    ImageUrl:
+      type: string
+      format: url
+      description: url for image
+      example: https://ui-avatars.com/api/?name=John+Doe
+    AdminRole:
+      type: string
+      description: slug of admin role
+      example: superadmin
+
+    # Request Schema
+    LoginRequest:
+      type: object
+      required:
+        -  email
+        -  password
+      properties:
+        email:
+          $ref: "#/components/schemas/Email"
+        password:
+          type: string
+          description: Password
+          example: password
+        remember_me:
+          type: boolean
+          default: false
+          example: false
+
+    CreateAdminRequest:
+      type: object
+      required:
+        -  name
+        -  email
+        -  role
+        -  password
+        -  password_confirmation
+      properties:
+        name:
+          type: string
+          description: Name of admin
+          maxLength: 250
+          example: Jack Mi
+        email:
+          $ref: "#/components/schemas/Email"
+        role:
+          $ref: "#/components/schemas/AdminRole"
+        password:
+          type: string
+          description: New password of customer
+          minLength: 8
+          example: newpassword
+        password_confirmation:
+          type: string
+          description: New password confirmation of customer
+          minLength: 8
+          example: newpassword
+
+    UpdateAdminRequest:
+      type: object
+      required:
+        -  name
+        -  role
+      properties:
+        name:
+          type: string
+          description: Name of admin
+          maxLength: 250
+          example: Jack Mi
+        role:
+          $ref: "#/components/schemas/AdminRole"
+        password:
+          type: string
+          description: New password of customer. (optional)
+          minLength: 8
+          example: newpassword
+
+    # Response Schema
+    MeResponse:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/DataID"
+        email:
+          $ref: "#/components/schemas/Email"
+        name:
+          type: string
+          description: Name of customer
+          example: Jack Mi
+        photo:
+          $ref: "#/components/schemas/ImageUrl"
+        role:
+          type: string
+          description: role slug
+          example: admin
+    LoginResponse:
+      $ref: "#/components/schemas/MeResponse"
+
+    AdminListItem:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/DataID"
+        email:
+          $ref: "#/components/schemas/Email"
+        name:
+          type: string
+          description: Name of customer
+          example: Jack Mi
+        photo:
+          $ref: "#/components/schemas/ImageUrl"
+        role:
+          $ref: "#/components/schemas/AdminRole"
+
+    AdminDetail:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/DataID"
+        email:
+          $ref: "#/components/schemas/Email"
+        name:
+          type: string
+          description: Name of customer
+          example: Jack Mi
+        photo:
+          $ref: "#/components/schemas/ImageUrl"
+        role:
+          $ref: "#/components/schemas/AdminRole"
+
+    PaginationLinks:
+      type: object
+      properties:
+        first:
+          type: string
+          example: https://example.com/api/v1/example/lists?page=2
+        last:
+          type: string
+          example: https://example.com/api/v1/example/lists?page=10
+        prev:
+          type: string
+          example: https://example.com/api/v1/example/lists?page=1
+        next:
+          type: string
+          example: https://example.com/api/v1/example/lists?page=3
+
+    PaginationMeta:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          example: 1
+        from:
+          type: integer
+          example: 1
+        last_page:
+          type: integer
+          example: 10
+        links:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+                example: https://example.com/api/v1/example/lists?page=1
+              label:
+                type: string
+                example: 1
+              active:
+                type: boolean
+                example: true
+        path:
+          type: string
+          example: https://example.com/api/v1/example/lists
+        per_page:
+          type: integer
+          example: 10
+        to:
+          type: integer
+          example: 10
+        total:
+          type: integer
+          example: 100
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          required:
+            - code
+            - title
+            - message
+            - errors
+          properties:
+            code:
+              type: integer
+              description: Http status code
+              enum:
+                - 401
+                - 403
+                - 404
+                - 422
+                - 500
+              default: 500
+              example: 500
+            title:
+              type: string
+              description: Error response title
+              example: Server Error
+            message:
+              type: string
+              description: error message
+              example: Something is wrong. Be patient.
+            errors:
+              type: array
+              description: List of validation error
+              items:
+                type: object
+                properties:
+                  key:
+                    type: string
+                    description: field name that fail in validation
+                  message:
+                    type: string
+                    description: Validation error message
+  responses:
+    422Error:
+      description: Validation Error Response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            Error:
+              $ref: "#/components/examples/422Error"
+    401Error:
+      description: Unauthenticated
+      headers:
+        X-RateLimit-Remaining:
+          schema:
+            type: integer
+            description: Remaining attempts in seconds
+            example: 89
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            Error:
+              $ref: "#/components/examples/401Error"
+    403Error:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            Error:
+              $ref: "#/components/examples/403Error"
+    404Error:
+      description: Url Not Found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            Error:
+              $ref: "#/components/examples/404Error"
+    429Error:
+      description: Request limit
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            Error:
+              $ref: "#/components/examples/404Error"
+
+  examples:
+    422Error:
+      value:
+        error:
+          code: 422
+          title: Validation Error
+          message: The given data was invalid.
+          errors:
+            - key: "student.name"
+              message: Student name is required
+    401Error:
+      value:
+        error:
+          code: 401
+          title: Authentication Failed
+          message: Unauthenticated.
+          errors: []
+    403Error:
+      value:
+        error:
+          code: 403
+          title: Access Forbidden
+          message: Invalid signature.
+          errors: []
+    404Error:
+      value:
+        error:
+          code: 404
+          title: Url Not Found
+          message: Not Found.
+          errors: []
+    429Error:
+      value:
+        error:
+          code: 429
+          title: Request limit
+          message: Not Found.
+          errors: []
+    500Error:
+      value:
+        error:
+          code: 500
+          title: Server Error
+          message: Something is wrong. Be patient.
+          errors: []
+
+

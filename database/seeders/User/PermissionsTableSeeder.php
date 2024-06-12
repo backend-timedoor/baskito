@@ -3,6 +3,7 @@
 namespace Database\Seeders\User;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
 
 class PermissionsTableSeeder extends Seeder
 {
@@ -17,48 +18,25 @@ class PermissionsTableSeeder extends Seeder
          * Permission Types
          *
          */
-        $Permissionitems = [
-            [
-                'name'        => 'Can View Users',
-                'slug'        => 'view.users',
-                'description' => 'Can view users',
-                'model'       => 'Permission',
-            ],
-            [
-                'name'        => 'Can Create Users',
-                'slug'        => 'create.users',
-                'description' => 'Can create new users',
-                'model'       => 'Permission',
-            ],
-            [
-                'name'        => 'Can Edit Users',
-                'slug'        => 'edit.users',
-                'description' => 'Can edit users',
-                'model'       => 'Permission',
-            ],
-            [
-                'name'        => 'Can Delete Users',
-                'slug'        => 'delete.users',
-                'description' => 'Can delete users',
-                'model'       => 'Permission',
-            ],
-        ];
+        $permissions = json_decode(
+            File::get(storage_path('master/permission/permissions.json'))
+        );
+
+        $model = config('roles.models.permission');
 
         /*
          * Add Permission Items
          *
          */
-        foreach ($Permissionitems as $Permissionitem) {
-            $newPermissionitem = config('roles.models.permission')::where('slug', '=', $Permissionitem['slug'])->first();
-
-            if ($newPermissionitem === null) {
-                $newPermissionitem = config('roles.models.permission')::create([
-                    'name'        => $Permissionitem['name'],
-                    'slug'        => $Permissionitem['slug'],
-                    'description' => $Permissionitem['description'],
-                    'model'       => $Permissionitem['model'],
-                ]);
-            }
+        foreach ($permissions as $permission) {
+            $model::updateOrCreate(
+                ['slug' => $permission->slug],
+                [
+                    'name'        => $permission->name,
+                    'description' => $permission->description,
+                    'model'       => $permission->model,
+                ]
+            );
         }
     }
 }

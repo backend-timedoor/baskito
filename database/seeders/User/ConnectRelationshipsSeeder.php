@@ -3,6 +3,8 @@
 namespace Database\Seeders\User;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
 
 class ConnectRelationshipsSeeder extends Seeder
 {
@@ -16,15 +18,24 @@ class ConnectRelationshipsSeeder extends Seeder
         /**
          * Get Available Permissions.
          */
-        $permissions = config('roles.models.permission')::all();
+        $permissionModel = config('roles.models.permission');
+        $roleModel       = config('roles.models.role');
+
+        $rolePermissions = json_decode(
+            File::get(storage_path('master/permission/role-permission.json'))
+        );
 
         /**
          * Attach Permissions to Roles.
          */
-        $roleAdmin = config('roles.models.role')::where('slug', '=', 'superadmin')->first();
+        foreach ($rolePermissions as $relation) {
+            $role = $roleModel::firstWhere('slug', $relation->role);
 
-        foreach ($permissions as $permission) {
-            $roleAdmin->attachPermission($permission);
+            $permissions = $permissionModel::whereIn('slug', $relation->permissions)->get();
+
+            $role->syncPermissions($permissions);
         }
+
+        Cache::tags(['permissions'])->flush();
     }
 }

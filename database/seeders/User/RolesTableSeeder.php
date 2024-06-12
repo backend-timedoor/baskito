@@ -3,6 +3,7 @@
 namespace Database\Seeders\User;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
 
 class RolesTableSeeder extends Seeder
 {
@@ -17,36 +18,25 @@ class RolesTableSeeder extends Seeder
          * Role Types
          *
          */
-        $RoleItems = [
-            [
-                'name'        => 'Super Admin',
-                'slug'        => 'superadmin',
-                'description' => 'Super Admin Role',
-                'level'       => 1,
-            ],
-            [
-                'name'        => 'Admin',
-                'slug'        => 'admin',
-                'description' => 'Admin Role',
-                'level'       => 1,
-            ],
-        ];
+        $roles = json_decode(
+            File::get(storage_path('master/permission/roles.json'))
+        );
+
+        $model = config('roles.models.role');
 
         /*
          * Add Role Items
          *
          */
-        foreach ($RoleItems as $RoleItem) {
-            $newRoleItem = config('roles.models.role')::where('slug', '=', $RoleItem['slug'])->first();
-
-            if ($newRoleItem === null) {
-                $newRoleItem = config('roles.models.role')::create([
-                    'name'        => $RoleItem['name'],
-                    'slug'        => $RoleItem['slug'],
-                    'description' => $RoleItem['description'],
-                    'level'       => $RoleItem['level'],
-                ]);
-            }
+        foreach ($roles as $role) {
+            $model::updateOrCreate(
+                ['slug' => $role->slug],
+                [
+                    'name'        => $role->name,
+                    'description' => $role->description,
+                    'level'       => $role->level,
+                ]
+            );
         }
     }
 }

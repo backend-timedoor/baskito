@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Super Admin",
+        "slug": "super.admin",
+        "description": "Super Admin Role",
+        "level": 1
+    },
+    {
+        "name": "Admin",
+        "slug": "admin",
+        "description": "Admin Role",
+        "level": 1
+    }
+]

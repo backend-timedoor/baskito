@@ -40,6 +40,10 @@ return [
             'driver'   => 'session',
             'provider' => 'users',
         ],
+        'api-admin' => [
+            'driver'   => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*
@@ -108,4 +112,21 @@ return [
 
     'password_timeout' => 10800,
 
+    'default_admins' => [
+        'dev' => [
+            'name'  => env('DEV_ADMIN_NAME', 'Developer Timedoor'),
+            'email' => env('DEV_ADMIN_EMAIL', 'dev@timedoor.net'),
+        ],
+        'super' => [
+            'name'  => env('SUPER_ADMIN_NAME'),
+            'email' => env('SUPER_ADMIN_EMAIL'),
+        ],
+    ],
+
+    'basic' => [
+        'default' => [
+            'username' => env('BASIC_AUTH_DEFAULT_USERNAME', 'timedoor'),
+            'password' => env('BASIC_AUTH_DEFAULT_PASSWORD', 'timedoor!@#$%'),
+        ],
+    ],
 ];
