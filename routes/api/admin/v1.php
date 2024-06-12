@@ -8,7 +8,10 @@ use App\Http\Controllers\API\Admin\V1\Auth\LoginController;
 use App\Http\Controllers\API\Admin\V1\Auth\MeController;
 use App\Http\Controllers\API\Admin\V1\Auth\ProfileController;
 use App\Http\Controllers\API\Admin\V1\Auth\UserPermissionController;
+use App\Http\Controllers\API\APIDocController;
 use Illuminate\Support\Facades\Route;
+
+APIDocController::registerRoute('docs/api/admin/api-v1.yaml', true);
 
 Route::post('auth/login', [LoginController::class, 'login'])->name('auth.login');
 Route::delete('auth/logout', [LoginController::class, 'logout'])->name('auth.logout');
