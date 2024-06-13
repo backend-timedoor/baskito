@@ -114,8 +114,8 @@ return [
 
     'default_admins' => [
         'dev' => [
-            'name'  => env('DEV_ADMIN_NAME', 'Developer Timedoor'),
-            'email' => env('DEV_ADMIN_EMAIL', 'dev@timedoor.net'),
+            'name'  => env('DEV_ADMIN_NAME'),
+            'email' => env('DEV_ADMIN_EMAIL'),
         ],
         'super' => [
             'name'  => env('SUPER_ADMIN_NAME'),
@@ -125,8 +125,8 @@ return [
 
     'basic' => [
         'default' => [
-            'username' => env('BASIC_AUTH_DEFAULT_USERNAME', 'timedoor'),
-            'password' => env('BASIC_AUTH_DEFAULT_PASSWORD', 'timedoor!@#$%'),
+            'username' => env('BASIC_AUTH_DEFAULT_USERNAME'),
+            'password' => env('BASIC_AUTH_DEFAULT_PASSWORD'),
         ],
     ],
 ];
