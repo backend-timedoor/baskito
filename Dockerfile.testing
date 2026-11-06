@@ -1,0 +1,24 @@
+FROM php:8.3-cli-bookworm
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        git \
+        libicu-dev \
+        libonig-dev \
+        libzip-dev \
+        unzip \
+    && docker-php-ext-install bcmath intl mbstring opcache pdo_mysql zip \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
+
+WORKDIR /var/www/html
+
+COPY composer.json composer.lock ./
+RUN composer install --no-interaction --prefer-dist --no-progress --no-scripts
+
+COPY . .
+
+RUN composer dump-autoload --no-interaction --optimize
+
+CMD ["php", "artisan", "test"]

@@ -10,6 +10,7 @@
 /resources/scripts/utils/ziggy/index.ts
 /resources/scripts/types/ziggy.d.ts
 .env
+.env.testing
 .env.backup
 .env.production
 .phpunit.result.cache
