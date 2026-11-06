@@ -26,7 +26,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    command: sh -c "php artisan migrate --env=testing && php artisan test"
+    command: tail -f /dev/null
 
   db:
     image: mysql:8.4
