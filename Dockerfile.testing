@@ -2,12 +2,15 @@ FROM php:8.3-cli-bookworm
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+        curl \
         git \
         libicu-dev \
         libonig-dev \
         libzip-dev \
         unzip \
     && docker-php-ext-install bcmath intl mbstring opcache pdo_mysql zip \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y --no-install-recommends nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
@@ -16,6 +19,9 @@ WORKDIR /var/www/html
 
 COPY composer.json composer.lock ./
 RUN composer install --no-interaction --prefer-dist --no-progress --no-scripts
+
+COPY package.json package-lock.json ./
+RUN npm ci
 
 COPY . .
 

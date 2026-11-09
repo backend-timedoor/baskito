@@ -8,6 +8,10 @@ services:
       - .:/var/www/html
       - vendor:/var/www/html/vendor
       - composer-cache:/tmp/composer
+      - node-modules:/var/www/html/node_modules
+    ports:
+      - "127.0.0.1:5173:5173"
+      - "127.0.0.1:8000:8000"
     environment:
       APP_ENV: testing
       APP_KEY: base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
@@ -49,3 +53,4 @@ volumes:
   composer-cache:
   testing-db:
   vendor:
+  node-modules:
