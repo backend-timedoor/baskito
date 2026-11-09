@@ -67,8 +67,4 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./resources", import.meta.url)),
     },
   },
-
-  server: {
-    cors: true
-	},
 });
