@@ -5,8 +5,8 @@ namespace App\Console\Commands\Ziggy;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use Tightenco\Ziggy\Output\Types;
-use Tightenco\Ziggy\Ziggy;
+use Tighten\Ziggy\Output\Types;
+use Tighten\Ziggy\Ziggy;
 
 class TypeGenerator extends Command
 {
@@ -69,7 +69,7 @@ class TypeGenerator extends Command
     }
 
     /**
-     * @return class-string<\Tightenco\Ziggy\Output\Types>
+     * @return class-string<\Tighten\Ziggy\Output\Types>
      */
     protected function getTypeClass()
     {
@@ -80,7 +80,7 @@ class TypeGenerator extends Command
         }
 
         throw new \InvalidArgumentException(
-            'The output type class must be a Tightenco\Ziggy\Output\Types class or extend it.'
+            'The output type class must be a Tighten\Ziggy\Output\Types class or extend it.'
         );
     }
 }

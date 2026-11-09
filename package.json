@@ -20,11 +20,12 @@
         "eslint": "^8.52.0",
         "eslint-config-prettier": "^9.0.0",
         "eslint-plugin-vue": "^9.17.0",
+        "laravel-vite-plugin": "^1.0.0",
         "prettier": "^3.0.3",
         "sass": "^1.69.4",
         "typescript": "5.2.2",
-        "vite": "^4.5.9",
-        "vite-plugin-laravel": "^0.3.1",
+        "vite": "^5.4.0",
+        "vite-tsconfig-paths": "^6.1.1",
         "vue-eslint-parser": "^9.3.2",
         "vue-tsc": "^2.0.29"
     },
@@ -37,6 +38,6 @@
         "ziggy-js": "^1.8.1"
     },
     "volta": {
-        "node": "16.20.2"
+        "node": "22"
     }
 }
